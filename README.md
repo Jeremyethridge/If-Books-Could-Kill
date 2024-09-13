@@ -6,7 +6,6 @@ If Books Could Kill is a Full Stack e-commerce web application where users regis
 ## Table of Contents:
 
 - [Description](#description)
-- [Deployed Link](#deployed-link)
 - [Project Requirements](#project-requirements)
 - [Output](#output)
 - [Wireframes](#wireframes)
