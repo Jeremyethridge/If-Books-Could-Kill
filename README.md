@@ -7,7 +7,6 @@ If Books Could Kill is a Full Stack e-commerce web application where users regis
 
 - [Description](#description)
 - [Project Requirements](#project-requirements)
-- [Output](#output)
 - [Wireframes](#wireframes)
 - [Collaborators](#collaborators)
 - [Technologies Used](#technologies-used)
@@ -30,14 +29,6 @@ If Books Could Kill is a Full Stack e-commerce web application where users regis
 12. Be interactive.
 13. Meet good-quality coding standards.
 14. Have a professional README.
-
-## Output
-
-<img width="1274" alt="Login Page" src="https://github.com/cody-deering/If-Books-Could-Kill/assets/134161776/1c498407-2ec8-46a5-a643-8693954f577c">
-
-<img width="1276" alt="Homepage" src="https://github.com/cody-deering/If-Books-Could-Kill/assets/134161776/91dbd856-a6e1-465c-94d3-d08dee28b525">
-
-<img width="1261" alt="Checkout Page" src="https://github.com/cody-deering/If-Books-Could-Kill/assets/134161776/8150eb33-1c27-4ae4-9749-facc0fc2b1a2">
 
 
 ## Wireframes
