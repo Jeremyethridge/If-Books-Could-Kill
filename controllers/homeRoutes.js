@@ -1,38 +1,11 @@
 const router = require('express').Router();
 const Book = require('../models/books');
-//const Shoppingcart = require('../models/shoppingcart');
-//const Shoppingcart_book = require('../models/shoppingcart_book');
 const User = require('../models/user')
 const Auth = require('../utils/auth');
 
-
-router.get('/homepage', async (req, res) => {
-    try {
-      // Get all projects and JOIN with user data
-      const booksData = await Book.findAll({
-        include: [
-          {
-            model: User,
-          },
-        ],
-      });
-  
-      // Serialize data so the template can read it
-      const books = booksData.map((book) => book.get({ plain: true }));
-      console.log(books);
-      // Pass serialized data and session flag into template
-      res.render('homepage', { 
-        books, 
-        logged_in: req.session.logged_in 
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-
   router.get("/", function(req, res) {
     if (req.user) {
-      res.redirect("/homepage");
+      res.redirect("/");
     } else {
       res.render('login');
     }
@@ -57,6 +30,7 @@ router.get('/book/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 router.get('/homepage', Auth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
@@ -73,7 +47,7 @@ router.get('/homepage', Auth, async (req, res) => {
   }
 });
 
-router.get('/checkout', async (req, res) => {
+router.get('/checkout', (req, res) => {
   try {
     res.render('checkout-page');
   } catch (err) {
@@ -82,4 +56,29 @@ router.get('/checkout', async (req, res) => {
   }
 });
 
+router.get('/login', (req, res) => {
+  try {
+    res.render('login');
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}); 
+
+router.post('/create-account', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = await User.create({
+            email: email,
+            password: hashedPassword 
+        });
+        req.session.user_id = newUser.id;
+        req.session.logged_in = true;
+        res.redirect('/homepage');
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Failed to create account' });
+    }
+});
   module.exports = router;

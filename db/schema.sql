@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS goodreads_db;
+DROP DATABASE IF EXISTS if_books_could_kill;
 
-CREATE DATABASE goodreads_db;
+CREATE DATABASE if_books_could_kill;
